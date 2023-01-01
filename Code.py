@@ -1,13 +1,12 @@
 #Rania Aziz Farooqi
-
 #Storing the menu indicating different categories of food.
 Menu=["Burgers","Combo_Meals","Drinks","Add_Ons"]
-Burgers = [
+Burgers = [ #Types of Burgers
     {
-        "id": 101,
-        "name": "Chicken Burger",
+        "id": 101, #ID Number
+        "name": "Chicken Burger", 
         'price': "10 AED",
-        "stock": 29,
+        "stock": 29, #The amount that is is in stock
     },
     {
         "id": 102,
@@ -108,39 +107,47 @@ Add_Ons = [
 ]
 
 quit = False
-item = ''
+the_item = []
 
-while quit == False:
-    print("Welcome to Burgermania!\nHere is what we have to ofFer:")
-    print("1 - Burgers\n2 - Combo Meals\n3 - Drinks\n4 - Add Ons")
-    order_pt1=int(input("Enter the number associated with each category to browse its menu."))
+reciept = """
+\t\tPRODUCT -- PRICE
+"""
 
-    def Menu(list):
-        for i in list:
-            print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']}")
+sum = 0
 
-    if order_pt1>4 or order_pt1<1:
-        print("This number is invalid")
-    elif order_pt1==1:
-        print("Burgers:")
-        Menu(Burgers)
-    elif order_pt1==2:
-        print("Combo Meals:")
-        Menu(Combo_Meals)
-    elif order_pt1==3:
-        print("Drinks:")
-        Menu(Drinks)
-    else:
-        print("Add Ons:")
-        Menu(Add_Ons)
+run = True
+def machine(Menu,quit,the_item)
+    while quit == False:
+        print("Welcome to Burgermania!\nHere is what we have to ofFer:")
+        print("1 - Burgers\n2 - Combo Meals\n3 - Drinks\n4 - Add Ons")
+        order_pt1=int(input("Enter the number associated with each category to browse its menu."))
 
-    order = int(input("Enter the ID of the item you want to order: "))
-    for i in (Burgers or Combo_Meals or Drinks or Add_Ons) :
-        if order == i['id']:
-            item = i
-    if item == '':
-        print('This code is invalid.')
-        order = input("To quit the machine enter q and to continue buying enter anything: ")
+        def Menu(list):
+            for i in list:
+                print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']}")
+
+        if order_pt1>4 or order_pt1<1:
+            print("This number is invalid")
+        elif order_pt1==1:
+            print("Burgers:")
+            Menu(Burgers)
+        elif order_pt1==2:
+            print("Combo Meals:")
+            Menu(Combo_Meals)
+        elif order_pt1==3:
+            print("Drinks:")
+            Menu(Drinks)
+        else:
+            print("Add Ons:")
+            Menu(Add_Ons)
+
+        order = int(input("Enter the ID of the item you want to order: "))
+        for i in (Burgers or Combo_Meals or Drinks or Add_Ons) :
+            if order == i['id']:
+                item = i
+        if item == '':
+            print('This code is invalid.')
+            order = input("To quit the machine enter q and to continue buying enter anything: ")
 
 def sum(the_item):
     sum = 0
@@ -164,8 +171,10 @@ def create_reciept(the_item, reciept):
         """
     return r
 
-if order == 'c':
-    quit = False
-else:
+if order == 'q':
     quit = True
+else:
+    quit = False
 print('')
+if __name__ == "__main__":
+    machine() 
