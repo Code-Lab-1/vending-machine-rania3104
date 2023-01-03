@@ -102,7 +102,7 @@ def machine(quit,the_item):
         
         print("Your order till now:",the_item)        
 
-        more_items = str(input("press any key to add more items and press q to quit.. "))
+        more_items = str(input("Enter to add more items or press q to quit.. "))
         if more_items == "q":
             quit=True
         
