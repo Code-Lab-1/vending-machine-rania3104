@@ -100,7 +100,7 @@ def machine(quit,the_item):
         else:
             print('This code is invalid.')
         
-        print("You order till now:",the_item)        
+        print("Your order till now:",the_item)        
 
         more_items = str(input("press any key to add more items and press q to quit.. "))
         if more_items == "q":
