@@ -93,9 +93,9 @@ def machine(quit,the_item):
         order = int(input("Enter the ID of the item you want to order: "))
         if order <=4 and order>=1:
             the_item.append(Burgers[order])
-        elif order <=8:
+        elif order <=8 or order >=5:
             the_item.append(Drinks[order])
-        elif order <=12:
+        elif order <=12 or order >=9:
             the_item.append(Add_Ons[order])         
         else:
             print('This code is invalid.')
