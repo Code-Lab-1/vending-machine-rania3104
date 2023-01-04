@@ -104,11 +104,12 @@ def machine(quit,full_order):
 
         order = int(input("Enter the ID of the item you want to order: "))
         if (order <3 or order ==3):
-            full_order.append(Burgers[order])
-            if full_order['stock']==0:
+            item=Burgers["id"]
+            if item['stock']==0:
                 print("Sorry this item is out of stock!")
             else: 
-                full_order['stock'] -= 1
+                item['stock'] -= 1
+                full_order.append(Burgers[order])
         elif (order <7 or order ==7):
             full_order.append(Drinks[order-4])
         elif order <11 or order ==11:

@@ -71,7 +71,7 @@ quit = False
 full_order = []
 
 reciept = """
-\t\tPRODUCT -- PRICE
+\t\tITEM -- PRICE
 """
 
 sum = 0
