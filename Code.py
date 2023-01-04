@@ -72,70 +72,95 @@ full_order = []
 
 reciept = """
 \t\tITEM -- PRICE
-"""
+\n"""
 
-sum = 0
+total = 0
 
 print("Welcome to Burgermania!\nHere is what we have to ofFer:")
 print("\n1 - Burgers")
 for i in Burgers:
     print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
-print("2 - Drinks")
+print("\n2 - Drinks")
 for i in Drinks:
     print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
-print("3 - Add Ons")
+print("\n3 - Add Ons")
 for i in Add_Ons:
     print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
 
 def machine(quit,full_order):
-    while quit == False:
+    def ordering(quit,full_order):
+        while quit == False:
+            order = int(input("Enter the ID of the item you want to order: "))
+            if (order <3 or order ==3):
+                full_order.append(Burgers[order])
+            elif (order <7 or order ==7):
+                full_order.append(Drinks[order-4])
+            elif (order <11 or order ==11):
+                full_order.append(Add_Ons[order-8])         
+            else:
+                print('\nThis code is invalid.')
+        
+            print("\nYour order till now: ")  
+            for i in full_order:
+                print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")  
+            more_items = str(input("\nEnter to add more items or press q to quit.. "))
+            if more_items == "q":
+                quit=True
 
-        order = int(input("Enter the ID of the item you want to order: "))
-        if (order <3 or order ==3):
-            full_order.append(Burgers[order])
-        elif (order <7 or order ==7):
-            full_order.append(Drinks[order-4])
-        elif order <11 or order ==11:
-            full_order.append(Add_Ons[order-8])         
+    def suggestions(full_order):
+        print("\nYou may also like:")
+        if Burgers in full_order:
+            for i in Drinks and Add_Ons:
+                print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
+        elif Drinks in full_order:
+            for i in Burgers and Add_Ons:
+                print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
         else:
-            print('\nThis code is invalid.')
-        
-        print("\nYour order till now: ")  
-        for i in full_order:
-            print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")    
+            for i in Add_Ons:
+                print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
+    
+    ordering(quit,full_order)
+    suggestions(full_order)
+    more_items = str(input("\nEnter if you still want to buy more or press q to quit.. "))
+    if more_items == "q":
+        quit=True
+    else: 
+        ordering(quit,full_order)
+    
+    def sum(full_order):
+        total= 0
 
-        more_items = str(input("Enter to add more items or press q to quit.. "))
-        if more_items == "q":
-            quit=True
-        
+        for i in full_order:
+            total += i["price"]
+
+        return total
+    
+    def create_reciept(full_order, reciept):
+
+        for i in full_order:
+            reciept += f"""
+            \t{i["name"]} -- {i['price']} AED
+            
+            """
+
+        reciept += f"""
+            \tTotal --- {sum(full_order)} AED
+            """
+        reciept += f"""
+            \tAmount Paid --- {amount_paid} AED
+            """
+        reciept += f"""
+            \tBalance --- {change} AED
+            """
+        return reciept
+
     print("\nHere is the total:",sum(full_order),"AED")
-    balance= int(input("Please enter the cash amount."))
-    if balance>sum(full_order):
-        change=balance-sum(full_order)
+    amount_paid= int(input("Please enter the cash amount."))
+    if amount_paid>sum(full_order):
+        change=amount_paid-sum(full_order)
         print("\nYour order has been dispensed.\nHere is your change:",change,"AED.","\n\nHere is your receipt! ")
     print(create_reciept(full_order, reciept))
 
-def sum(full_order):
-    sum = 0
-
-    for i in full_order:
-        sum += i["price"]
-
-    return sum
-
-def create_reciept(full_order, reciept):
-
-    for i in full_order:
-        reciept += f"""
-        \t{i["name"]} -- {i['price']} AED
-        """
-
-    reciept += f"""
-        \tTotal --- {sum(full_order)} AED
-        
-        
-        """
-    return reciept
 
 if __name__ == "__main__":
     machine(quit,full_order) 
