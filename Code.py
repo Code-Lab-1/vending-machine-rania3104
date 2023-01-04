@@ -109,14 +109,20 @@ def machine(quit,full_order): #creating the main function of the machine
 
     def suggestions(full_order): #function to give suggestions to the user to buy anything else they may like
         print("\nYou may also like:")
-        if Burgers in full_order:
-            for i in Drinks and Add_Ons: #if the user ordered a burger, they will be suggested drinks and add ons
+        if 0 or 1 or 2 or 3 in full_order:
+            for i in Drinks: #if the user ordered a burger, they will be suggested drinks and add ons
                 print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
-        elif Drinks in full_order:
-            for i in Burgers and Add_Ons: #if the user ordered a drink, they will be suggested burgers and add ons
+            for i in Add_Ons:
+                print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
+        elif 4 or 5 or 6 or 7 in full_order:
+            for i in Add_Ons: #if the user ordered a drink, they will be suggested add ons and burgers
+                print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
+            for i in Burgers:
                 print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
         else:
-            for i in Drinks and Burgers: 
+            for i in Burgers: 
+                print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
+            for i in Drinks:
                 print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED")
     
     ordering(quit,full_order) #calling the main function of ordering
@@ -169,7 +175,11 @@ def machine(quit,full_order): #creating the main function of the machine
             #message telling the user their order is despensed and giving them their change and receipt
             print("\nYour order has been dispensed.\nHere is your change:",change,"AED.","\n\nHere is your receipt! ")
             print(create_receipt(full_order, receipt)) #calling the function of creating receipt from above
-
+    else:
+        change=amount_paid-sum(full_order) #calculation of the change
+        #message telling the user their order is despensed and giving them their change and receipt
+        print("\nYour order has been dispensed.\nHere is your change:",change,"AED.","\n\nHere is your receipt! ")
+        print(create_receipt(full_order, receipt)) #calling the function of creating receipt from above
 
 if __name__ == "__main__": #code that runs the program when the main function machine is called
     machine(quit,full_order) 
