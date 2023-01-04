@@ -127,11 +127,11 @@ def create_reciept(full_order, reciept):
 
     for i in full_order:
         reciept += f"""
-        \t{i["name"]} -- {i['price']}
+        \t{i["name"]} -- {i['price']} AED
         """
 
     reciept += f"""
-        \tTotal --- {sum(full_order)}
+        \tTotal --- {sum(full_order)} AED
         
         
         """
