@@ -175,11 +175,14 @@ def machine(quit,full_order): #creating the main function of the machine
             #message telling the user their order is despensed and giving them their change and receipt
             print("\nYour order has been dispensed.\nHere is your change:",change,"AED.","\n\nHere is your receipt! ")
             print(create_receipt(full_order, receipt)) #calling the function of creating receipt from above
+            print("\nThank you for using Burgermania! Enjoy your order!\n") #closing message
+
     else:
         change=amount_paid-sum(full_order) #calculation of the change
         #message telling the user their order is despensed and giving them their change and receipt
         print("\nYour order has been dispensed.\nHere is your change:",change,"AED.","\n\nHere is your receipt! ")
         print(create_receipt(full_order, receipt)) #calling the function of creating receipt from above
+        print("\nThank you for using Burgermania! Enjoy your order!\n") #closing message
 
 if __name__ == "__main__": #code that runs the program when the main function machine is called
     machine(quit,full_order) 
