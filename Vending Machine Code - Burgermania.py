@@ -62,7 +62,7 @@ Add_Ons=[{#third category
     }
 ]
 
-Menu =[Burgers,Drinks,Add_Ons] #complete menu is a list
+Menu =[Burgers,Drinks,Add_Ons] #complete menu in a list
 
 
 quit = False #assigning the variable quit to False
