@@ -63,8 +63,6 @@ Add_Ons=[{#third category
 ]
 
 Menu =[Burgers,Drinks,Add_Ons] #complete menu is a list
-def Conversion_of_dict_to_list(dict):
-    list(dict.keys())[list(dict.values()).index(val)] #conversion of the above dictionaries to lists for easy use ahead
 
 
 quit = False #assigning the variable quit to False
