@@ -74,7 +74,7 @@ receipt = """
 
 total = 0 #assigning the total amount of money to 0
 
-print("\nWelcome to Burgermania!\nHere is what we have to ofFer:") #opening message letting the user know the menu ahead
+print("\nWelcome to Burgermania!\nHere is what we have to offer:") #opening message letting the user know the menu ahead
 print("\n1 - Burgers")
 for i in Burgers:
     print(f"Item ID: {i['id']} - Item Name: {i['name']} - Price: {i['price']} AED") #loop to print the corresponding menu according to the category
