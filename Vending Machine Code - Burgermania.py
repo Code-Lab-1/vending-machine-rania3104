@@ -182,5 +182,5 @@ def machine(quit,full_order): #creating the main function of the machine
         print(create_receipt(full_order, receipt)) #calling the function of creating receipt from above
         print("\nThank you for using Burgermania! Enjoy your order!\n") #closing message
 
-if __name__ == "__main__": #code that runs the program when the main function machine is called
-    machine(quit,full_order) 
+machine(quit,full_order) #main function called
+
